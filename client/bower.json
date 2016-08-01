@@ -1,0 +1,17 @@
+{
+  "name": "client",
+  "authors": [
+    "Anthony Simpson <ansi6622@colorado.edu>"
+  ],
+  "description": "a.simpson portfolio site",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
