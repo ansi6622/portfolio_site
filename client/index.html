@@ -3,11 +3,46 @@
   <head>
     <meta charset="utf-8">
     <title>Anthony Tron Simpson</title>
-    
   </head>
-  <body ng-app>
+
+  <!-- 'Turn on' angular app for the html body -->
+  <body ng-app="myApp">
+    <!-- require angular with the bower pkg mngr and test -->
     <script src="bower_components/angular/angular.js"></script>
-    <h2>Its Angular Bitches</h2>
-    {{2 + 3}}
+    <h2>Its Angular Bitches: {{2 + 4 + 6 - 5}}</h2>
+    <!-- Assign a Controller(the main/only one) to div -->
+    <div ng-controller="mainController">
+      {{projects.data.title}}
+      <!-- iterate over each column name and value for the first project -->
+      <div ng-repeat="(key, value) in projects.data.projects[0]">
+        <!-- display what is found -->
+        <h2 ng-bind="key"></h2>
+        <h3>{{value}}</h3>
+      </div>
+    </div>
+
+
+    <!-- JS -->
+    <script type="text/javascript">
+    //  instantiate angular app
+    var app = angular.module('myApp', []);
+    // inject http dependency into main controller
+    app.controller('mainController', ['$scope','$http', function($scope,$http) {
+     //$http is working in this
+     $http({
+       method: 'GET',
+       url: 'http://localhost:3000/data'
+     })
+     .then(function successCallback(data) {
+       //  Assign data to porjects property of scope object
+       $scope.projects = data;
+      },
+      function errorCallback(response) {
+       // called asynchronously if an error occurs
+       console.log("Fuck", response);
+       // or server returns response with an error status.
+     });
+    }]);
+    </script>
   </body>
 </html>
