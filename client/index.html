@@ -14,10 +14,11 @@
     <div ng-controller="mainController">
       {{projects.data.title}}
       <!-- iterate over each column name and value for the first project -->
-      <div ng-repeat="(key, value) in projects.data.projects[0]">
+      <div ng-repeat="(key, value) in projects.data.projects">
         <!-- display what is found -->
         <h2 ng-bind="key"></h2>
         <h3>{{value}}</h3>
+        
       </div>
     </div>
 
