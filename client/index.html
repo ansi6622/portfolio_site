@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/skeleton/css/skeleton.css">
     <title>Anthony Tron Simpson</title>
   </head>
 
@@ -9,16 +10,31 @@
   <body ng-app="myApp">
     <!-- require angular with the bower pkg mngr and test -->
     <script src="bower_components/angular/angular.js"></script>
+
     <h2>Its Angular Bitches: {{2 + 4 + 6 - 5}}</h2>
     <!-- Assign a Controller(the main/only one) to div -->
     <div ng-controller="mainController">
       {{projects.data.title}}
-      <!-- iterate over each column name and value for the first project -->
-      <div ng-repeat="(key, value) in projects.data.projects">
+      <!-- iterate over each table entry's column value for the data -->
+      <div class="container" ng-repeat="(key, value) in projects.data.projects">
         <!-- display what is found -->
-        <h2 ng-bind="key"></h2>
-        <h3>{{value}}</h3>
-        
+        <!-- <h3>{{value}}</h3> -->
+        <div class="row">
+          <div class="two columns">
+            <img ng-src="{{value.image_link}}" height="64em" width="64em">
+          </div>
+          <div class="four columns">
+            <h3>{{value.name}}</h3>
+            <!-- Angular overides links, link below may offer a solution  -->
+            <!--https://stackoverflow.com/questions/24457962/linking-to-external-url-with-different-domain-from-within-an-angularjs-partial-->
+            <a href="{{value.url}}">{{value.url}}</a>
+            <a href="{{value.github}}">{{value.github}}</a>
+            <!-- <h3>{{value.id}}</h3> -->
+          </div>
+          <div class="six columns">
+            <h3>{{value.description}}</h3>
+          </div>
+        </div>
       </div>
     </div>
 
